@@ -58,7 +58,8 @@ while True:
         while True:
             if poke_bdd_choice_mysql == "y" and "Y":
                 cursor = cnx.cursor()
-                cursor.execute("CREATE DATABASE pokemon")
+                cursor.execute("CREATE DATABASE pokemon;")
+                cnx.commit()
                 cursor.close()
                 break
             elif poke_bdd_choice_mysql == "n" and "N":
@@ -81,6 +82,7 @@ while True:
                     database="pokemon")
                 cursor = cnx.cursor()
                 cursor.execute("""CREATE TABLE liste_pokemon (id INT AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(50));""")
+                cnx.commit()
                 cursor.close()
                 break
             elif poke_table_choice == "n" and "N":
@@ -154,7 +156,7 @@ while True:
                             port="5432")
                 cur = conn.cursor()
                 cur.execute("""CREATE TABLE liste_pokemon (id serial PRIMARY KEY, nom VARCHAR(50));""")
-                #conn.commit()
+                conn.commit()
                 #conn.close()
                 break
             elif poke_table_choice == "n" and "N":
@@ -176,9 +178,9 @@ while True:
                 cur = conn.cursor()
                 for name in generate_random_gen4_pokemon_names(poke_gen_number):
                     poke_insert = "INSERT INTO liste_pokemon (nom) VALUES (%s)"
-                    conn.execute(poke_insert, (name,))
+                    cur.execute(poke_insert, (name,))
                 conn.commit()
-                conn.close()
+                cur.close()
                 break
             elif poke_insert_choice == "n" and "N":
                 print("Le Pokemon n'a pas été inséré")
