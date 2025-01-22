@@ -1,6 +1,7 @@
 import pypokedex
 import random
 from getpass import getpass
+from tqdm import tqdm
 
 def get_random_gen4_pokemon_name():
     # Définir les limites pour la génération 4
@@ -41,7 +42,6 @@ while True:
         choice = int(input("Veuillez entrer un chiffre valide. [1/2] ")) 
 
 # Configuration de la connexion
-#DB_PASS = input("Quel est le mot de passe de votre SGBD? ")
 DB_PASS = getpass("Quel est le mot de passe de votre SGBD? ")
 DB_HOST = str(input("Quel est l'adresse IP de votre SGBD? "))
 
@@ -109,7 +109,8 @@ while True:
                                     password=DB_PASS,
                                     database="pokemon")
                 cursor = cnx.cursor()
-                for name in generate_random_gen4_pokemon_names(poke_gen_number):
+                #for name in generate_random_gen4_pokemon_names(poke_gen_number):
+                for name in tqdm(generate_random_gen4_pokemon_names(poke_gen_number)):
                     poke_insert = "INSERT INTO liste_pokemon (nom) VALUES (%s)"
                     cursor.execute(poke_insert, (name,))
                 cnx.commit()
@@ -207,7 +208,8 @@ while True:
                             host=DB_HOST,
                             port="5432")
                 cur = conn.cursor()
-                for name in generate_random_gen4_pokemon_names(poke_gen_number):
+                #for name in generate_random_gen4_pokemon_names(poke_gen_number):
+                for name in tqdm (generate_random_gen4_pokemon_names(poke_gen_number)):
                     poke_insert = "INSERT INTO liste_pokemon (nom) VALUES (%s)"
                     cur.execute(poke_insert, (name,))
                 conn.commit()
