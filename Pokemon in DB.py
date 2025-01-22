@@ -27,12 +27,18 @@ def pokemon_generator():
     random_gen4_pokemon_names = generate_random_gen4_pokemon_names(20)
     for name in random_gen4_pokemon_names:
         print(name)
-
+ 
 choice=int(input("""Quel SGBD comptez-vous utiliser?
                                   
                  1. MySQL
                  2. PostgreSQL
-                 : """))    
+                 : """))
+
+while True:
+    if choice == 1 or choice == 2:
+        break
+    else:
+        choice = int(input("Veuillez entrer un chiffre valide. [1/2] ")) 
 
 # Configuration de la connexion
 #DB_PASS = input("Quel est le mot de passe de votre SGBD? ")
@@ -114,6 +120,31 @@ while True:
                 break
             else:
                 poke_insert_choice = input("Veuillez entrer une réponse valide. [y/n] ")
+
+        # Voir la liste
+        while True:
+            see_pokemon = input("Voulez-vous voir la liste des Pokémon? [y/n] ")
+
+            if see_pokemon == "y" and "Y":
+                cnx = mysql.connector.connect(
+                                        host=DB_HOST,
+                                        port="3306" ,
+                                        user="root",
+                                        password=DB_PASS,
+                                        database="pokemon")
+                cursor = cnx.cursor()
+                cursor.execute("SELECT * FROM liste_pokemon")
+                rows = cursor.fetchall()  # Récupérer tous les résultats
+                for row in rows:
+                    print(f"ID: {row[0]}, Nom: {row[1]}")
+                #cnx.commit()
+                cursor.close()
+                break
+            elif see_pokemon == "n" and "N":
+                print("La liste des Pokémon n'a pas été affichée")
+                break
+            else:
+                see_pokemon = input("Veuillez entrer une réponse valide. [y/n] ")
         break
 
 # PostgreSQL
@@ -169,7 +200,7 @@ while True:
         poke_insert_choice = input("Voulez-vous insérer un Pokemon dans la table liste_pokemon? [y/n] ")
         while True:
             if poke_insert_choice == "y" and "Y":
-                poke_gen_number = int(input("Combien de Pokémon voulez-vous insérez? (107 max) "))
+                poke_gen_number = int(input("Combien de Pokémon voulez-vous insérez? "))
                 conn = psycopg.connect(dbname="pokemon",
                             user="postgres",
                             password=DB_PASS,
@@ -187,6 +218,31 @@ while True:
                 break
             else:
                 poke_insert_choice = input("Veuillez entrer une réponse valide. [y/n] ")
+
+        # Voir la liste
+        while True:
+            see_pokemon = input("Voulez-vous voir la liste des Pokémon? [y/n] ")
+
+            if see_pokemon == "y" and "Y":
+                conn = psycopg.connect(
+                                        host=DB_HOST,
+                                        port="5432" ,
+                                        user="postgres",
+                                        password=DB_PASS,
+                                        dbname="pokemon")
+                cur = conn.cursor()
+                cur.execute("SELECT * FROM liste_pokemon")
+                rows = cur.fetchall()  # Récupérer tous les résultats
+                for row in rows:
+                    print(f"ID: {row[0]}, Nom: {row[1]}")
+                #conn.commit()
+                cur.close()
+                break
+            elif see_pokemon == "n" and "N":
+                print("La liste des Pokémon n'a pas été affichée")
+                break
+            else:
+                see_pokemon = input("Veuillez entrer une réponse valide. [y/n] ")
         break
     else:
-        print("Veuillez entrer un chiffre valide")
+        choice = int(input("Veuillez entrer un chiffre valide. [1/2] "))
