@@ -1,5 +1,6 @@
 import pypokedex
 import random
+from getpass import getpass
 
 def get_random_gen4_pokemon_name():
     # Définir les limites pour la génération 4
@@ -34,10 +35,13 @@ choice=int(input("""Quel SGBD comptez-vous utiliser?
                  : """))    
 
 # Configuration de la connexion
-DB_PASS = input("Quel est le mot de passe de votre SGBD? ")
+#DB_PASS = input("Quel est le mot de passe de votre SGBD? ")
+DB_PASS = getpass("Quel est le mot de passe de votre SGBD? ")
 DB_HOST = str(input("Quel est l'adresse IP de votre SGBD? "))
 
 while True:
+
+# MySQL    
     if choice == 1:
         # Import de la librairie
         import mysql.connector
@@ -100,6 +104,7 @@ while True:
                 for name in generate_random_gen4_pokemon_names(poke_gen_number):
                     poke_insert = "INSERT INTO liste_pokemon (nom) VALUES (%s)"
                     cursor.execute(poke_insert, (name,))
+                cnx.commit()
                 cursor.close()
                 break
             elif poke_insert_choice == "n" and "N":
@@ -108,6 +113,8 @@ while True:
             else:
                 poke_insert_choice = input("Veuillez entrer une réponse valide. [y/n] ")
         break
+
+# PostgreSQL
     elif choice == 2:
         # Import de la librairie
         import psycopg
