@@ -22,7 +22,7 @@ while True:
     if choice == 1 or choice == 2 or choice == 3:
         break
     else:
-        choice = int(input("Veuillez entrer un chiffre valide. [1/2] ")) 
+        choice = int(input("Veuillez entrer un chiffre valide. [1 - 2 - 3] ")) 
 
 while True:
 
