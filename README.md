@@ -15,12 +15,12 @@ Ce script fait appelle à une API qui s'appelle [PokeAPI](https://pokeapi.co/) �
 
 ## ⬇️ 3. Installation
 
-### 0.3 Pré-requis
+### 3.0 Pré-requis
 
 Git
 Python
 
-### 1. Poetry
+### 3.1. Poetry
 
 Installer Poetry sur votre système. Référez vous à la documentation spécifique à votre machine.
 
