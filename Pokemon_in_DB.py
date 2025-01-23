@@ -15,7 +15,7 @@ choice=int(input("""Quel SGBD comptez-vous utiliser?
                 \033[94m1. MySQL / MariaDB\033[0m
                 \033[32m2. PostgreSQL\033[0m
                 \033[92m3. MongoDB\033[0m
-                > """))
+                : """))
 
 print() # Saut à la ligne
 
