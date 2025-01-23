@@ -3,6 +3,8 @@
 import pypokedex
 import random
 
+# \033[93m \033[0m - Jaune pour Pokémon
+
 def welcome():
     ascii = r"""
                                   ,'\

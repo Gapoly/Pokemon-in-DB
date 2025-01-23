@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
-def mysql_connection(DB_PASS, DB_HOST):
+# \033[94m \033[0m - Bleu pour MySQL & MariaDB
+
+def mysql_connection(DB_PASS,DB_HOST):
     # Import de la librairie
     import mysql.connector
     from tqdm import tqdm
@@ -65,7 +67,7 @@ def mysql_connection(DB_PASS, DB_HOST):
             cursor = cnx.cursor()
             #for name in generate_random_gen4_pokemon_names(poke_gen_number):
             print("\033[93mConnection à PokeAPI en cours...\033[0m")
-            for name in tqdm(generate_random_gen4_pokemon_names(poke_gen_number)):
+            for name in tqdm(generate_random_gen4_pokemon_names(poke_gen_number),colour='yellow'):
                 poke_insert = "INSERT INTO liste_pokemon (nom) VALUES (%s)"
                 cursor.execute(poke_insert, (name,))
             cnx.commit()

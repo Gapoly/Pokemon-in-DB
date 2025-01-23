@@ -1,9 +1,9 @@
 #!/usr/bin/python
 
+# \033[32m \033[0m - Vert pour PostgreSQL
 
 
-
-def postgresql_connection(DB_PASS, DB_HOST):
+def postgresql_connection(DB_PASS,DB_HOST):
     # Import de la librairie
     import psycopg
     from tqdm import tqdm
@@ -16,7 +16,7 @@ def postgresql_connection(DB_PASS, DB_HOST):
         port="5432")
         
     # Création de la BDD Pokemon
-    poke_bdd_choice_psql = input("Voulez-vous créer la BDD Pokemon? [y/n] ")
+    poke_bdd_choice_psql = input("\033[32mVoulez-vous créer la BDD Pokemon? [y/n]\033[0m ")
     while True:
         if poke_bdd_choice_psql == "y" and "Y":
             cur = conn.cursor()
@@ -34,7 +34,7 @@ def postgresql_connection(DB_PASS, DB_HOST):
             poke_bdd_choice_psql = input("Veuillez entrer une réponse valide. [y/n] ")
 
     # Création de la table liste_pokemon
-    poke_table_choice = input("Voulez-vous créer la table liste_pokemon? [y/n] ")
+    poke_table_choice = input("\033[32mVoulez-vous créer la table liste_pokemon? [y/n]\033[0m ")
     while True:
         if poke_table_choice == "y" and "Y":
             conn = psycopg.connect(dbname="pokemon",
@@ -54,18 +54,18 @@ def postgresql_connection(DB_PASS, DB_HOST):
             poke_table_choice = input("Veuillez entrer une réponse valide. [y/n] ")
 
     # Insertion Pokemon
-    poke_insert_choice = input("Voulez-vous insérer un Pokemon dans la table liste_pokemon? [y/n] ")
+    poke_insert_choice = input("\033[32mVoulez-vous insérer un Pokemon dans la table liste_pokemon? [y/n]\033[0m ")
     while True:
         if poke_insert_choice == "y" and "Y":
-            poke_gen_number = int(input("Combien de Pokémon voulez-vous insérez? "))
+            poke_gen_number = int(input("\033[32mCombien de Pokémon voulez-vous insérez?\033[0m "))
             conn = psycopg.connect(dbname="pokemon",
                 user="postgres",
                 password=DB_PASS,
                 host=DB_HOST,
                 port="5432")
             cur = conn.cursor()
-            print("Connection à PokeAPI en cours...")
-            for name in tqdm (generate_random_gen4_pokemon_names(poke_gen_number)):
+            print("\033[93mConnection à PokeAPI en cours...\033[0m")
+            for name in tqdm (generate_random_gen4_pokemon_names(poke_gen_number),colour='yellow'):
                 poke_insert = "INSERT INTO liste_pokemon (nom) VALUES (%s)"
                 cur.execute(poke_insert, (name,))
             conn.commit()
@@ -79,7 +79,7 @@ def postgresql_connection(DB_PASS, DB_HOST):
 
     # Voir la liste
     while True:
-        see_pokemon = input("Voulez-vous voir la liste des Pokémon? [y/n] ")
+        see_pokemon = input("\033[32mVoulez-vous voir la liste des Pokémon? [y/n]\033[0m ")
 
         if see_pokemon == "y" and "Y":
             conn = psycopg.connect(

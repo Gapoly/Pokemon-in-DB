@@ -23,7 +23,7 @@ Installer Poetry sur votre système. Référez vous à la documentation spécifi
 git clone https://github.com/Gapoly/Pokemon-in-DB
 cd Pokemon-in-DB/
 poetry init
-poetry add mysql-connector mysql-connector-python psycopg psycopg-binary pypokedex tqdm
+poetry add mysql-connector mysql-connector-python psycopg psycopg-binary pypokedex tqdm pymongo
 poetry run python3 Pokemon_in_DB.py
 ```
 
