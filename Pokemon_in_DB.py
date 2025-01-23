@@ -2,10 +2,13 @@
 
 from getpass import getpass
 
+from fonctions.pokemon import welcome
 from fonctions.mysql import mysql_connection
 from fonctions.postgresql import postgresql_connection
 #from fonctions.mongodb import mongodb_connection
  
+welcome()
+
 choice=int(input("""Quel SGBD comptez-vous utiliser?
                                   
                  1. MySQL / MariaDB
