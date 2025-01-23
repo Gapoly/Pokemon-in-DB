@@ -14,7 +14,7 @@ def mysql_connection(DB_PASS, DB_HOST):
         password=DB_PASS)
 
     #Création de la BDD Pokemon
-    poke_bdd_choice_mysql = input("Voulez-vous créer la BDD Pokemon? [y/n] ")
+    poke_bdd_choice_mysql = input("\033[94mVoulez-vous créer la BDD Pokemon? [y/n]\033[0m ")
     while True:
         if poke_bdd_choice_mysql == "y" and "Y":
             cursor = cnx.cursor()
@@ -31,7 +31,7 @@ def mysql_connection(DB_PASS, DB_HOST):
             poke_bdd_choice_mysql = input("Veuillez entrer une réponse valide. [y/n] ")
 
     #Création de la table liste_pokemon
-    poke_table_choice = input("Voulez-vous créer la table liste_pokemon? [y/n] ")
+    poke_table_choice = input("\033[94mVoulez-vous créer la table liste_pokemon? [y/n]\033[0m ")
     while True:
         if poke_table_choice == "y" and "Y":
             cnx = mysql.connector.connect(
@@ -52,10 +52,10 @@ def mysql_connection(DB_PASS, DB_HOST):
             poke_table_choice = input("Veuillez entrer une réponse valide. [y/n] ")
        
     # Insertion Pokemon
-    poke_insert_choice = input("Voulez-vous insérer un Pokemon dans la table liste_pokemon? [y/n] ")
+    poke_insert_choice = input("\033[94mVoulez-vous insérer un Pokemon dans la table liste_pokemon? [y/n]\033[0m ")
     while True:
         if poke_insert_choice == "y" and "Y":
-            poke_gen_number = int(input("Combien de Pokémon voulez-vous insérez? "))
+            poke_gen_number = int(input("\033[94mCombien de Pokémon voulez-vous insérez?\033[0m "))
             cnx = mysql.connector.connect(
                     host=DB_HOST,
                     port="3306" ,
@@ -64,7 +64,7 @@ def mysql_connection(DB_PASS, DB_HOST):
                     database="pokemon")
             cursor = cnx.cursor()
             #for name in generate_random_gen4_pokemon_names(poke_gen_number):
-            print("Connection à PokeAPI en cours...")
+            print("\033[93mConnection à PokeAPI en cours...\033[0m")
             for name in tqdm(generate_random_gen4_pokemon_names(poke_gen_number)):
                 poke_insert = "INSERT INTO liste_pokemon (nom) VALUES (%s)"
                 cursor.execute(poke_insert, (name,))
@@ -79,7 +79,7 @@ def mysql_connection(DB_PASS, DB_HOST):
 
     # Voir la liste
     while True:
-        see_pokemon = input("Voulez-vous voir la liste des Pokémon? [y/n] ")
+        see_pokemon = input("\033[94mVoulez-vous voir la liste des Pokémon? [y/n]\033[0m ")
 
         if see_pokemon == "y" and "Y":
             cnx = mysql.connector.connect(

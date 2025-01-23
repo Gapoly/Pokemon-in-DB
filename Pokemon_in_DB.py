@@ -11,9 +11,10 @@ welcome()
 
 choice=int(input("""Quel SGBD comptez-vous utiliser?
                                   
-                 1. MySQL / MariaDB
-                 2. PostgreSQL
-                 : """))
+                \033[94m1. MySQL / MariaDB\033[0m
+                \033[92m2. PostgreSQL\033[0m
+                : """))
+#print("\033[93m" + ascii + "\033[0m")
 
 while True:
     if choice == 1 or choice == 2:

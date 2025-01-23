@@ -173,3 +173,4 @@ cython_debug/
 poetry.lock
 pyproject.toml
 auto-commit.sh
+Pokemon_in_DB_old.py
