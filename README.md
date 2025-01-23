@@ -7,7 +7,7 @@
 
 ## 🤔 1. Qu'est-ce qu'il fait?
 
-Ce script se connecte à un SGBD MySQL, MariaDB ou PostgreSQL. Il va créer une base de données Pokemon, une table et insérez une liste de Pokémons dedans. Il va insérer des Pokémons de la 4e génération.Pourquoi la 4e génération? Parce que c'est la meilleur.
+Ce script se connecte à un SGBD MySQL, MariaDB, PostgreSQL ou MongoDB. Il va créer une base de données Pokemon, une table et insérez une liste de Pokémons dedans. Il va insérer des Pokémons de la 4e génération.Pourquoi la 4e génération? Parce que c'est la meilleur.
 
 ## 🐍 2. Comment ça marche?
 
