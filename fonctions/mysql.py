@@ -11,7 +11,7 @@ def mysql_connection(DB_PASS,DB_HOST):
     # Connexion au SGBD
     cnx = mysql.connector.connect(
         host=DB_HOST,
-        port="3306" ,
+        port="3306",
         user="root",
         password=DB_PASS)
 
