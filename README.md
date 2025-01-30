@@ -7,7 +7,7 @@
 
 ## 🤔 1. Qu'est-ce qu'il fait?
 
-Ce script se connecte à un SGBD MySQL, MariaDB, PostgreSQL ou MongoDB. Il va créer une base de données Pokemon, une table et insérez une liste de Pokémons dedans. Il va insérer des Pokémons de la 4e génération.Pourquoi la 4e génération? Parce que c'est la meilleur.
+Ce script se connecte à un SGBD MySQL, MariaDB, PostgreSQL ou MongoDB. Il va créer une base de données Pokemon, une table et insérez une liste de Pokémons dedans. Il va insérer des Pokémons de la 4e génération.Pourquoi la 4e génération? Parce que c'est la meilleure.
 
 ## 🐍 2. Comment ça marche?
 
@@ -21,7 +21,7 @@ J'ai toujours était habitué à faire du MariaDB, soit du SQL. J'ai décidé de
 
 Bien sur, j'ai dû m'aider de l'IA pour faire ce script. Même ci je maîtrise la base du Python et comprends son principe, il y a des choses pour lequelle je n'avais pas les connaissances pour. Dans le script, il ma soit aidé à réparer des erreurs ou générer des bouts de code que je n'aurais pas pu faire, tel que:
 
-- Les fonctions faisant appelle à l'API pour générer une liste de Pokémon de manière aléatoire
+- Les fonctions faisant appelle à l'API pour générer une liste de Pokémon de manière aléatoire *(pokemon.py)*
 - Quelques corrections de bug de manières général
 
 Même ci les chatbots sont outils des très utiles pour ce genre de travail. J'essaye de les utiliser le moins possible pour ne pas en être dépendant.
@@ -41,11 +41,7 @@ Pour l'utilisation de ce script, il est nécessaire d'avoir au moins un SGBD fon
 - MongoDB :
     - Port : 27017
 
-Pour l'éxécution du script, je recommande l'utilisation de Poetry pour tester le script dans un environement isoler.
-
-### Notes
-
-Si dans votre SGBD vous avez déjà une base de données ou table avec déjà le même nom, il ne faut pas en recréer une par dessus. Ce script ne fais pas ça. Sauf pour MongoDB.
+Pour l'éxécution du script, je recommande l'utilisation de Poetry pour tester le script dans un environement isolé.
 
 ### Poetry
 
@@ -59,3 +55,6 @@ poetry add mysql-connector mysql-connector-python psycopg psycopg-binary pypoked
 poetry run python3 Pokemon_in_DB.py
 ```
 
+### Notes
+
+Si dans votre SGBD vous avez déjà une base de données ou table avec déjà le même nom, il ne faut pas en recréer une par dessus. Ce script ne fais pas ça. Sauf pour MongoDB.
